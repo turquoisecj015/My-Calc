@@ -16,15 +16,6 @@ function CalcButton({value, onClick}) {
     </button>
   );
 }
-
-function NegateButton({value,onClick}){
-  return (
-    <button className="calcButton" onClick={onClick}>
-      negate
-    </button>
-  )
-}
-
 function ClearButton({value, onClick}){
   return (
     <button className="calcButton redcolor" onClick={onClick}>
@@ -40,7 +31,6 @@ function App() {
   const [oper, setOper] = useState(0);
   const [res, setRes] = useState(0);
   const [disp, setDisp] = useState(0);
-  const[nega, setNega] = useState(0);
 
   const numberClickHandler = (e) => {
     e.preventDefault();
@@ -52,38 +42,18 @@ function App() {
         setDisp(value);
       }
       else{
-        if(String(num1).length<10){
-          setNum1(num1+value)
-          setDisp(num1+value);
-        }
+        setNum1(num1+value)
+        setDisp(num1+value);
       }
-    }
-    else if(oper=="negate"){
-      if (parseInt(num1) === 0) {
-        setNum1("-"+value)
-        setDisp("-"+value);
-      }
-      else{
-        if(String(num1).length<10){
-          setNum1(num1+value)
-          setDisp(num1+value);
-        }
-      }
-    }
-    else if(oper!="negate"){
+    } else {
       if (parseInt(num2) === 0) {
         setNum2(value)
         setDisp(value);
       }
       else{
-        if(String(num2).length<10){
-          setNum2(num2+value)
-          setDisp(num2+value);
-        }
+        setNum2(num2+value)
+        setDisp(num2+value);
       }
-    }
-    else{
-      setDisp("Error negate only once at the beginning");
     }
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
   };
@@ -161,7 +131,6 @@ function App() {
         <CalcButton value="0" onClick={numberClickHandler}/>
         <CalcButton value="=" onClick={equalClickHandler}/>
         <CalcButton value="/" onClick={operClickHandler}/>
-        <NegateButton value="negate" onClick={operClickHandler}/>
       </div>
     </div>
   );
