@@ -33,6 +33,7 @@ function ClearButton({value, onClick}){
   );
 }
 
+
 function App() {
 
   const [num1, setNum1] = useState(0);
@@ -40,7 +41,6 @@ function App() {
   const [oper, setOper] = useState(0);
   const [res, setRes] = useState(0);
   const [disp, setDisp] = useState(0);
-  const[nega, setNega] = useState(0);
 
   const numberClickHandler = (e) => {
     e.preventDefault();
@@ -96,7 +96,19 @@ function App() {
 
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
   };
-
+  const deleteClickHandler = (e) => {
+    e.preventDefault();
+    const value = e.target.innerHTML;
+    if(oper === 0){
+      setNum1(num1.slice(0, -1));
+      setDisp(disp.slice(0, -1));
+    }
+    else
+    {
+      setNum2(num2.slice(0, -1));
+      setDisp(disp.slice(0, -1));
+    }
+  }
   const equalClickHandler = () => {
     console.log(num1 +'|'+ num2 +'|'+ oper +'|'+ res +'|'+ disp);
 
@@ -119,7 +131,16 @@ function App() {
     {
       setRes(parseInt(num1) / parseInt(num2));
       setDisp(parseInt(num1) / parseInt(num2));
+    } else if(oper==="%")
+    {
+      setRes(parseInt(num1) %  parseInt(num2));
+      setDisp(parseInt(num1) % parseInt(num2));
+    }else if(oper==="^")
+    {
+      setRes(parseInt(num1) ** parseInt(num2));
+      setDisp(parseInt(num1) ** parseInt(num2));
     }
+
     else {
       setDisp("ERROR");
       setNum1(0);
@@ -161,6 +182,9 @@ function App() {
         <CalcButton value="0" onClick={numberClickHandler}/>
         <CalcButton value="=" onClick={equalClickHandler}/>
         <CalcButton value="/" onClick={operClickHandler}/>
+        <CalcButton value="%" onClick={operClickHandler}/>
+        <CalcButton value="^" onClick={operClickHandler}/>
+        <CalcButton value="Del" onClick={deleteClickHandler}/>
         <NegateButton value="negate" onClick={operClickHandler}/>
       </div>
     </div>

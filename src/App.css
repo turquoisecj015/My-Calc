@@ -49,20 +49,22 @@ body {
 .calcContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
+  width: 400px;
   height: 600px;
 }
 
 .calcDisplay {
   width:600px;
   text-align: right;
-  height: 23%;
-  font-size: 4em;
+  height: 10%;
+  font-size: 2em;
   padding:0 20px;
   background:#374353;
   color:white;
-  overflow:hidden;
+  overflow:visible;
   overflow-wrap: break-word;
+  border-style: ridge;
+  border-width: 20px;
 }
 
 .calcButtonsContainer {
@@ -70,14 +72,16 @@ body {
   flex-wrap: wrap;
   padding: 15% 5%;
   background-color: #374353;
+  border-style: groove;
+  border-width: 20px;
 }
 
 .calcButton {
-  border-style:solid;
-  border-width: thick;
   display: flex;
   flex: 1 0 10%;
-  font-size:4em;
+  border-style:solid;
+  border-width: thick;
+  font-size:2em;
   margin: 15px 5%;
   justify-content: center;
   background-color: #374353;
